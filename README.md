@@ -10,3 +10,4 @@ run `python lanplay_manager.py` or `python lanplay_legacy.py` inside directory t
 
 `pip3 install PyQt5` for new ui
 
+`pip3 install requests` 
