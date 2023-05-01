@@ -83,7 +83,7 @@ class LanplayManagerWindow(QMainWindow):
         selectedServer = self.check_selected_server()
         if selectedServer:
             if self.check_server_status(selectedServer, True):
-                command = "start /B start cmd.exe @cmd /k bin\lan-play.exe --relay-server-addr %s" % server_selected
+                command = "start /B start cmd.exe @cmd /k bin\lan-play.exe --relay-server-addr %s" % selectedServer
                 os.system(command)
         else:
             self.errorDialog('Please select a server from the list.')
@@ -156,14 +156,14 @@ class LanplayManagerWindow(QMainWindow):
             print(index)
             if index == -1:
                 raise 'No row selected'
-            server_selected = self.ui.server_list.item(index, 2).text()
-            print(server_selected)
-            while (server_selected.startswith('  ')):
+            selectedServer = self.ui.server_list.item(index, 2).text()
+            print(selectedServer)
+            while (selectedServer.startswith('  ')):
                 index -= 1
                 print(index)
-                server_selected = self.ui.server_list.item(index, 2).text()
-                print(server_selected)
-            return server_selected
+                selectedServer = self.ui.server_list.item(index, 2).text()
+                print(selectedServer)
+            return selectedServer
         except Exception:
             return None
 
