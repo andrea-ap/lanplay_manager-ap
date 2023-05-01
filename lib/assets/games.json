@@ -1,0 +1,570 @@
+[
+	{
+	"ID": "0100152000022000",
+	"Name":"Mario Kart 8 Deluxe"
+	},
+	{
+	"ID": "01006A800016E000",
+	"Name":"Super Smash Bros. Ultimate"
+	},
+	{
+	"ID": "0100A3D008C5C000",
+	"Name":"Pokemon Scarlet"
+	},
+	{
+	"ID": "01008F6008C5E000",
+	"Name":"Pokemon Violet"
+	},
+	{
+	"ID": "01006F8002326000",
+	"Name":"Animal Crossing"
+	},
+	{
+	"ID": "010028600EBDA000",
+	"Name":"Super Mario 3D World + Bowsers Fury"
+	},
+	{
+	"ID": "01006FD0080B2000",
+	"Name":"Overcooked 2"
+	},
+	{
+	"ID": "0100F2200C984000",
+	"Name":"Mortal Kombat 11"
+	},
+	{
+	"ID": "0100ABF008968000",
+	"Name":"Pokemon Sword"
+	},
+	{
+	"ID": "01008DB008C2C000",
+	"Name":"Pokemon Shield"
+	},
+	{
+	"ID": "0100B6E012EBE000",
+	"Name":"UNO"
+	},
+	{
+	"ID": "01007960049A0000",
+	"Name":"Bayonetta 2"
+	},
+	{
+	"ID": "010003000E146000",
+	"Name":"Mario & Sonic at the Olympic Games"
+	},
+	{
+	"ID": "010078D000F88000",
+	"Name":"Dragonball Xenoverse 2"
+	},
+	{
+	"ID": "010036B0034E4000",
+	"Name":"Super Mario Party"
+	},
+	{
+	"ID": "01009B500007C000",
+	"Name":"ARMS"
+	},
+	{
+	"ID": "01009B90006DC000",
+	"Name":"Super Mario Maker 2"
+	},
+	{
+	"ID": "01003BC0000A0000",
+	"Name":"Splatoon 2"
+	},
+	{
+	"ID": "01001F5010DFA000",
+	"Name":"Pokemon Arceus"
+	},
+	{
+	"ID": "01001B300B9BE000",
+	"Name":"Diablo 3"
+	},
+	{
+	"ID": "0100DCA0064A6000",
+	"Name":"Luigi's Mansion 3"
+	},
+	{
+	"ID": "0100D71004694000",
+	"Name":"Minecraft"
+	},
+	{
+	"ID": "0100D4A00B284000",
+	"Name":"Ark Survival Evolved"
+	},
+	{
+	"ID": "0100C9C00E25C000",
+	"Name":"Mario Golf"
+	},
+	{
+	"ID": "0100BDE00862A000",
+	"Name":"Mario Tennis Aces"
+	},
+	{
+	"ID": "0100A250097F0000",
+	"Name":"Dragonball FighterZ"
+	},
+	{
+	"ID": "0100B3F000BE2000",
+	"Name":"Pokken Tournament DX"
+	},
+	{
+	"ID": "0100B04011742000",
+	"Name":"Monster Hunter Rise"
+	},
+	{
+	"ID": "0100C1800A9B6000",
+	"Name":"Go Vacation"
+	},
+	{
+	"ID": "0100CC00102B4000",
+	"Name":"Tony Hawks Pro Skater 1+2"
+	},
+	{
+	"ID": "0100CC700B2B4000",
+	"Name":"Pixark"
+	},
+	{
+	"ID": "0100D03003F0E000",
+	"Name":"Nine Parchments"
+	},
+	{
+	"ID": "0100D9000A930000",
+	"Name":"Trine Enchanted Edition"
+	},
+	{
+	"ID": "0100DE600BEEE000",
+	"Name":"Saints Row The Third"
+	},
+	{
+	"ID": "0100E5E00C464000",
+	"Name":"Super Dragonball Heroes World Mission"
+	},
+	{
+	"ID": "0100E65002BB8000",
+	"Name":"Stardew Valley"
+	},
+	{
+	"ID": "0100E46006708000",
+	"Name":"Terraria"
+	},
+	{
+	"ID": "0100EC400D54E000",
+	"Name":"Sword Art Online Hollow Realization"
+	},
+	{
+	"ID": "0100EC8004762000",
+	"Name":"Korg Gadget"
+	},
+	{
+	"ID": "0100F7B002340000",
+	"Name":"FIFA 18"
+	},
+	{
+	"ID": "0100F7000464A000",
+	"Name":"Super Beat Sports"
+	},
+	{
+	"ID": "0100FFA0093E8000",
+	"Name":"FIFA 19"
+	},
+	{
+	"ID": "01000CA004DCA000",
+	"Name":"Human Fall Flat"
+	},
+	{
+	"ID": "01001AE005166000",
+	"Name":"Worms W.M.D"
+	},
+	{
+	"ID": "01001C700873E000",
+	"Name":"God Eater 3"
+	},
+	{
+	"ID": "01001FD0040F4000",
+	"Name":"Brawlout"
+	},
+	{
+	"ID": "01001FF00B544000",
+	"Name":"NBA 2K19"
+	},
+	{
+	"ID": "01005DA003E6E000",
+	"Name":"Morphies Law"
+	},
+	{
+	"ID": "01005DE00D05C000",
+	"Name":"FIFA 20"
+	},
+	{
+	"ID": "01005EE0036EC000",
+	"Name":"Rocket League"
+	},
+	{
+	"ID": "01005EF00B4BC000",
+	"Name":"Ms.Splosion Man"
+	},
+	{
+	"ID": "01007AD00013E000",
+	"Name":"Super Bomberman R"
+	},
+	{
+	"ID": "01007FC00A040000",
+	"Name":"Payday 2"
+	},
+	{
+	"ID": "01008D100D43E000",
+	"Name":"Saints Row IV"
+	},
+	{
+	"ID": "010060A00B53C000",
+	"Name":"Broforce"
+	},
+	{
+	"ID": "010064E00A932000",
+	"Name":"Trine 2"
+	},
+	{
+	"ID": "010073C001D5E000",
+	"Name":"PuyoPuyo Tetris"
+	},
+	{
+	"ID": "010076D00E4BA000",
+	"Name":"Risk of Rain 2"
+	},
+	{
+	"ID": "010092B0091D0000",
+	"Name":"Team Sonic Racing"
+	},
+	{
+	"ID": "010096F00FF22000",
+	"Name":"Borderlands"
+	},
+	{
+	"ID": "010010400D46A000",
+	"Name":"Snack World"
+	},
+	{
+	"ID": "010022400BE5A000",
+	"Name":"Yu-Gi-oh! Legacy of the Duelist"
+	},
+	{
+	"ID": "010026000E466000",
+	"Name":"NBA 2K20"
+	},
+	{
+	"ID": "010026800BA16000",
+	"Name":"Xenon"
+	},
+	{
+	"ID": "010042000A986000",
+	"Name":"Dragon Quest Builders 2"
+	},
+	{
+	"ID": "010060700AC50000",
+	"Name":"Marvel Ultimate Alliance 3"
+	},
+	{
+	"ID": "010075000C608000",
+	"Name":"Red Faction Guerilla"
+	},
+	{
+	"ID": "0100770008DD8000",
+	"Name":"Monster Hunter Generations Ultimate"
+	},
+	{
+	"ID": "01007330027EE000",
+	"Name":"Ultra Street Fighter II"
+	},
+	{
+	"ID": "01009510001CA000",
+	"Name":"Fast RMX"
+	},
+	{
+	"ID": "010034500641A000",
+	"Name":"Attack on Titan 2"
+	},
+	{
+	"ID": "010089700150E000",
+	"Name":"Dragon Marked For Death"
+	},
+	{
+	"ID": "010095300212A000",
+	"Name":"Resident Evil 2 Revelations"
+	},
+	{
+	"ID": "0100437004170000",
+	"Name":"Portal Knights"
+	},
+	{
+	"ID": "0100643002136000",
+	"Name":"Resident Evil Revelations"
+	},
+	{
+	"ID": "0100830008426000",
+	"Name":"Just Shapes & Beats"
+	},
+	{
+	"ID": "0100974004924000",
+	"Name":"Rayman Legends"
+	},
+	{
+	"ID": "0100C2500FC20000",
+	"Name":"Splatoon 3"
+	},
+	{
+	"ID": "01006FE013472000",
+	"Name":"Mario Party Superstars"
+	},
+	{
+	"ID": "0100A8B00F0B4000",
+	"Name":"Hypercharge Unboxed"
+	},
+	{
+	"ID": "010007D00D43A000",
+	"Name":"Serious Sam Collection"
+	},
+	{
+	"ID": "01008C8012920000",
+	"Name":"Dying Light: Definitive Edition"
+	},
+	{
+	"ID": "010019401051C000",
+	"Name":"Mario Strikers: Battle League"
+	},
+	{
+	"ID": "0100000011D90000",
+	"Name":"Pokemon Brilliant Diamond"
+	},
+	{
+	"ID": "010018E011D92000",
+	"Name":"Pokemon Shining Pearl"
+	},
+	{
+	"ID": "01005DF00DC26000",
+	"Name":"Sword Art Online: Fatal Bullet Complete Edition"
+	},
+	{
+	"ID": "010090400D366000",
+	"Name":"Torchlight II"
+	},
+	{
+	"ID": "010010F01418E000",
+	"Name":"Remnant: From the Ashes"
+	},
+	{
+	"ID": "010092A0172E4000",
+	"Name":"It Takes Two"
+	},
+	{
+	"ID": "0100605008268000",
+	"Name":"Titan Quest"
+	},
+	{
+	"ID": "010039501405E000",
+	"Name":"Blanc"
+	},
+	{
+	"ID": "0100499013C4A000",
+	"Name":"Cannon Brawl"
+	},
+	{
+	"ID": "0100BF00112C0000",
+	"Name":"Catherine: Full Body"
+	},
+	{
+	"ID": "01006A30124CA000",
+	"Name":"Chocobo GP Lite"
+	},
+	{
+	"ID": "010047700D540000",
+	"Name":"Clubhouse Games: 51 Worldwide Classics"
+	},
+	{
+	"ID": "010038E0137A8000",
+	"Name":"Curling"
+	},
+	{
+	"ID": "0100B6400CA56000",
+	"Name":"Daemon X Machina"
+	},
+	{
+	"ID": "0100F2300D4BA000",
+	"Name":"Darksiders Genesis"
+	},
+	{
+	"ID": "0100C8900DC54000",
+	"Name":"Deer Drive Legends"
+	},
+	{
+	"ID": "01005ED00CD70000",
+	"Name":"Door Kickers: Action Squad"
+	},
+	{
+	"ID": "01006980127F0000",
+	"Name":"Fight Crab"
+	},
+	{
+	"ID": "010061E00E8BE000",
+	"Name":"Garfield Kart Furious Racing"
+	},
+	{
+	"ID": "0100DC800A602000",
+	"Name":"Grid Autosport"
+	},
+	{
+	"ID": "0100E09009600000",
+	"Name":"Ibb & Obb"
+	},
+	{
+	"ID": "01005D2011EA8000",
+	"Name":"Kingdom Hearts Melody of Memory"
+	},
+	{
+	"ID": "0100227010460000",
+	"Name":"Kirby Fighters 2"
+	},
+	{
+	"ID": "0100A8E016236000",
+	"Name":"Kirby's Dream Buffet"
+	},
+	{
+	"ID": "0100B7000D89E000",
+	"Name":"Knights and Bikes"
+	},
+	{
+	"ID": "010051B0131F0000",
+	"Name":"Monster Jam Steel Titans 2"
+	},
+	{
+	"ID": "0100218011E7E000",
+	"Name":"MX vs ATV All Out"
+	},
+	{
+	"ID": "01008FE00E2F6000",
+	"Name":"One Piece: Pirate Warriors 4"
+	},
+	{
+	"ID": "0100396012844000",
+	"Name":"RESEARCH and DESTROY"
+	},
+	{
+	"ID": "010018100CD46000",
+	"Name":"Resident Evil 5"
+	},
+	{
+	"ID": "01002A000CD48000",
+	"Name":"Resident Evil 6"
+	},
+	{
+	"ID": "0100F18010BA0000",
+	"Name":"Speed 3: Grand Prix"
+	},
+	{
+	"ID": "010062800D39C000",
+	"Name":"Spongebob Squarepants: Battle for Bikini Bottom - Rehydrated"
+	},
+	{
+	"ID": "01003FB00C5A8000",
+	"Name":"Super Kirby Clash"
+	},
+	{
+	"ID": "0100DDD0085A4000",
+	"Name":"Sushi Striker: The Way of Sushido"
+	},
+	{
+	"ID": "01009720105B2000",
+	"Name":"Talking Tom Candy Run"
+	},
+	{
+	"ID": "0100563010E0C000",
+	"Name":"WarioWare: Get It Together"
+	},
+	{
+	"ID": "01001390140BC000",
+	"Name":"Zorya: The Celestial Sisters"
+	},
+	{
+	"ID": "01006D5014796000",
+	"Name": "Earth Defense Force: World Brothers"
+	},
+	{
+	"ID": "010075A00BA14000",
+	"Name":"Sniper Elite 3 - Ultimate Edition"
+	},
+	{
+	"ID": "010007B010FCC000",
+	"Name":"Sniper Elite 4"
+	},
+	{
+	"ID": "0100BB000A3AA000",
+	"Name":"Sniper Elite V2 Remastered"
+	},
+	{
+	"ID": "01002BE016054000",
+	"Name":"SD Gundam Battle Alliance"
+	},
+	{
+	"ID": "01005E101705C000",
+	"Name":"River City Saga: Three Kingdoms"
+	},
+	{
+	"ID": "0100ECF01800C000",
+	"Name":"Easy Come Easy Golf"
+	},
+	{
+	"ID": "01002DD016E50000",
+	"Name":"Capcom Fighting Collection"
+	},
+	{
+	"ID": "0100D51017162000",
+	"Name":"THE Bass Fishing"
+	},
+	{
+	"ID": "01000BF0152FA000",
+	"Name":"Zombie Army 4: Dead War"
+	},
+	{
+	"ID": "01007570160E2000",
+	"Name":"Gotta Protectors: Cart of Darkness"
+	},
+	{
+	"ID": "01005010150CA000",
+	"Name":"Vagante"
+	},
+	{
+	"ID": "0100CF3016BBE000",
+	"Name":"MotoGP22"
+	},
+	{
+	"ID": "0100D58012E12000",
+	"Name":"Gang Beasts"
+	},
+	{
+	"ID": "0100710013ABA000",
+	"Name":"Spelunky"
+	},
+	{
+	"ID": "0100F38014A3E000",
+	"Name":"Fishing Fighters"
+	},
+	{
+	"ID": "01002F0011DD4000",
+	"Name":"Hardcore Mecha"
+	},
+	{
+	"ID": "0100B3300B4AA000",
+	"Name":"Hyper Jam"
+	},
+	{
+	"ID": "0100C7300EEE4000",
+	"Name":"Zombie Army Trilogy"
+	},
+	{
+	"ID": "0100750001C70000",
+	"Name":"Duck Game"
+	},
+	{
+	"ID": "FFFFFFFFFFFFFFFF",
+	"Name":"Unknown Game"
+	}
+]
