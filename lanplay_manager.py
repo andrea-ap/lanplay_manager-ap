@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QMessageBox, QMainWindow, QTa
 from PyQt5 import uic, QtGui
 import sys
 
+import platform
 import os, requests, json, re
 import threading
 from tkinter import *
@@ -83,7 +84,16 @@ class LanplayManagerWindow(QMainWindow):
         selectedServer = self.check_selected_server()
         if selectedServer:
             if self.check_server_status(selectedServer, True):
-                command = "start /B start cmd.exe @cmd /k bin\lan-play.exe --relay-server-addr %s" % selectedServer
+                match platform.system():
+                    case "Windows":
+                        command = "start /B start cmd.exe @cmd /k bin\lan-play.exe --relay-server-addr %s" % selectedServer
+                    case "Darwin":
+                        command = "bash -c \"bin/lan-play-macos --replay-server-addr %s\"" % selectedServer
+                    case "Linux":
+                        command = "bash -c  \"bin/lan-play-linux --replay-server-addr %s \"" % selectedServer
+                    case _:
+                        print("unsupported system!")
+                        sys.exit(-1)
                 os.system(command)
         else:
             self.errorDialog('Please select a server from the list.')
