@@ -1,5 +1,6 @@
 # lanplay_manager
 a easy solution to managing all those servers 
+
 works on all platforms
 # how to install 
 download latest [python](https://www.python.org/downloads/) (older versions do not work)
