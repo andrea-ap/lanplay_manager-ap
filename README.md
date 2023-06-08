@@ -13,7 +13,7 @@ run `python lanplay_manager.py` or `python3 lanplay_manager.py` inside directory
 [official lanplay website](http://www.lan-play.com/)
 
 
-# extra troubleshooting steps
+# fail in terminal
 if you are getting __fail__ in the command prompt/terminal
 
 follow this guide for your specific platform instructions
@@ -22,3 +22,8 @@ follow this guide for your specific platform instructions
 [mac](https://rentry.org/TeknikLAN#mac), 
 [linux](https://rentry.org/TeknikLAN#linux), 
 [pi](https://rentry.org/TeknikLAN#raspberry-pi).
+
+# permission error
+`sudo chmod u+x pathtofile`
+
+replace pathtofile with the actual path
