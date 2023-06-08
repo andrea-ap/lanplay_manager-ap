@@ -13,7 +13,6 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QInputD
     QLineEdit, QDialogButtonBox, QVBoxLayout, QLabel
 
 from db import database
-from lanplay_legacy import oops_label, sever_address_value_label, save_label
 
 
 class LanplayManagerWindow(QMainWindow):
@@ -263,6 +262,15 @@ class LanplayManagerWindow(QMainWindow):
 
         return "Unknown Game"
 
+# Add server labels
+save_label = "Save"
+oops_label = "Oops!"
+great_label = "Great!"
+server_added_label = "Server added!"
+sever_address_value_label = "Sever address cannot be empty!"
+server_already_exists_label = "Server already exists!"
+server_port_values_label = "Server port must be between 0 and 65535"
+server_address_example_label = "Server address must be like lan.teknik.app:11451 for example"
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
