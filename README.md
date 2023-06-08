@@ -9,7 +9,11 @@ run `pip install -r requirements.txt` or `pip3 install -r requirements.txt` insi
 
 run `python lanplay_manager.py` or `python3 lanplay_manager.py` inside directory to launch
 
-# extra steps
+# get server to add
+[official lanplay website](http://www.lan-play.com/)
+
+
+# extra troubleshooting steps
 if you are getting __fail__ in the command prompt/terminal
 
 follow this guide for your specific platform instructions
