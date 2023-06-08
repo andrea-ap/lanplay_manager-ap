@@ -27,3 +27,9 @@ follow this guide for your specific platform instructions
 `sudo chmod u+x pathtofile`
 
 replace pathtofile with the actual path
+# console spam 
+```
+QObject::connect: Cannot queue arguments of type 'QVector<int>'
+(Make sure 'QVector<int>' is registered using qRegisterMetaType().)
+```
+ignore this will probably be fixed sometime in the future 
