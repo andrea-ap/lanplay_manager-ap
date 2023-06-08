@@ -1,17 +1,23 @@
-from PyQt5.QtWidgets import QApplication, QWidget, QMessageBox, QMainWindow, QTableWidgetItem, QInputDialog, QDialog, QLineEdit, QDialogButtonBox, QVBoxLayout, QLabel
-from PyQt5 import uic, QtGui
-import sys
-
+import json
+import os
 import platform
-import os, requests, json, re
+import re
+import requests
+import sys
 import threading
 from tkinter import *
+from tkinter import messagebox
+
+from PyQt5 import uic, QtGui
+from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QInputDialog, QDialog, \
+    QLineEdit, QDialogButtonBox, QVBoxLayout, QLabel
+
 from db import database
+from lanplay_legacy import oops_label, sever_address_value_label, save_label
 
 
 class LanplayManagerWindow(QMainWindow):
-
-    class errorDialog(QDialog):
+    class ErrorDialog(QDialog):
         def __init__(self, message):
             super().__init__()
 
@@ -27,9 +33,6 @@ class LanplayManagerWindow(QMainWindow):
             self.layout.addWidget(QLabel(message))
             self.layout.addWidget(self.buttonBox)
             self.setLayout(self.layout)
-
-
-
 
     server_address = None
     add_server_win = None
@@ -59,14 +62,12 @@ class LanplayManagerWindow(QMainWindow):
         }
     """}
 
-
     def __init__(self):
         super().__init__()
         self.ui = uic.loadUi('lib/assets/lanplaymanager.ui', self)
         self.tids = json.loads(open('lib/assets/games.json').read())
 
         self.setWindowIcon(QtGui.QIcon('lib/assets/lan.ico'))
-
 
         # authenticate when the login button is clicked
         self.ui.launch_server_button.clicked.connect(self.launch_server)
@@ -78,31 +79,30 @@ class LanplayManagerWindow(QMainWindow):
 
         self.refresh_server_list_thread()
 
-        
-
     def launch_server(self):
-        selectedServer = self.check_selected_server()
-        if selectedServer:
-            if self.check_server_status(selectedServer, True):
+        selected_server = self.check_selected_server()
+        if selected_server:
+            if self.check_server_status(selected_server, True):
                 match platform.system():
                     case "Windows":
-                        command = "start /B start cmd.exe @cmd /k bin\lan-play.exe --relay-server-addr %s" % selectedServer
+                        command = "start /B start cmd.exe @cmd /k bin\lan-play.exe --relay-server-addr %s" % selected_server
                     case "Darwin":
-                        command = "bash -c \"bin/lan-play-macos --replay-server-addr %s\"" % selectedServer
+                        command = "bash -c \"bin/lan-play-macos --relay-server-addr %s\"" % selected_server
                     case "Linux":
-                        command = "bash -c  \"bin/lan-play-linux --replay-server-addr %s \"" % selectedServer
+                        command = "bash -c  \"bin/lan-play-linux --relay-server-addr %s \"" % selected_server
                     case _:
                         print("unsupported system!")
                         sys.exit(-1)
-                os.system(command)
+                thread = threading.Thread(target=os.system, args=(command,))
+                thread.start()
         else:
-            self.errorDialog('Please select a server from the list.')
+            self.ErrorDialog('Please select a server from the list.')
 
     def delete_server(self):
-        selectedServer = self.check_selected_server()
-        if selectedServer:
+        selected_server = self.check_selected_server()
+        if selected_server:
             db = database()
-            db.delete_server(selectedServer)
+            db.delete_server(selected_server)
             db.close_connection()
             self.refresh_server_list_thread()
 
@@ -115,12 +115,11 @@ class LanplayManagerWindow(QMainWindow):
         """
         status = {}
 
-
-        try: 
+        try:
             url = "http://%s" % server_address
-            res = requests.post(url, json=self.graphql_request, timeout = 1)
+            res = requests.post(url, json=self.graphql_request, timeout=1)
             print(server_address)
-            if (res.status_code == 200):
+            if res.status_code == 200:
                 data = json.loads(res.text)['data']
                 status['online'] = int(data['serverInfo']['online'])
                 status['idle'] = int(data['serverInfo']['idle'])
@@ -128,35 +127,35 @@ class LanplayManagerWindow(QMainWindow):
                 return status
         except:
             pass
-        
+
         try:
             url = "http://%s/info" % server_address
-            res = requests.get(url, timeout = 1)
-            if (res.status_code == 200):
+            res = requests.get(url, timeout=1)
+            if res.status_code == 200:
                 data = json.loads(res.text)
                 status = {}
-                if ('online' in data):
+                if 'online' in data:
                     status['online'] = int(data['online'])
         except:
             pass
 
         try:
             url = "http://%s" % server_address
-            res = requests.get(url, timeout = 1)
-            if (res.status_code == 200):
-                    data = json.loads(res.text)
-                    if 'clientCount' in data:
-                        status['online'] = int(data['clientCount'])
+            res = requests.get(url, timeout=1)
+            if res.status_code == 200:
+                data = json.loads(res.text)
+                if 'clientCount' in data:
+                    status['online'] = int(data['clientCount'])
         except:
             pass
 
-        if (not 'online' in status):
+        if 'online' not in status:
             status['online'] = "?"
-        if (not 'idle' in status):
+        if 'idle' not in status:
             status['online'] = "?"
 
         if show_message:
-            self.errorDialog('Server not reachable.')
+            self.ErrorDialog('Server not reachable.')
 
         return status
 
@@ -166,15 +165,15 @@ class LanplayManagerWindow(QMainWindow):
             print(index)
             if index == -1:
                 raise 'No row selected'
-            selectedServer = self.ui.server_list.item(index, 2).text()
-            print(selectedServer)
-            while (selectedServer.startswith('  ')):
+            selected_server = self.ui.server_list.item(index, 2).text()
+            print(selected_server)
+            while selected_server.startswith('  '):
                 index -= 1
                 print(index)
-                selectedServer = self.ui.server_list.item(index, 2).text()
-                print(selectedServer)
-            return selectedServer
-        except Exception:
+                selected_server = self.ui.server_list.item(index, 2).text()
+                print(selected_server)
+            return selected_server
+        except:
             return None
 
     def do_popup(self, event):
@@ -183,7 +182,7 @@ class LanplayManagerWindow(QMainWindow):
     def add_server(self):
 
         server_address, ok = QInputDialog().getText(self, "Add a server",
-                                     "Server address:", QLineEdit.Normal)
+                                                    "Server address:", QLineEdit.Normal)
 
         if server_address and ok:
             pattern = re.compile("^(?!http:|https:|www.)([-a-zA-Z0-9@:%._]{1,256}):([0-9]{1,5})$")
@@ -191,20 +190,20 @@ class LanplayManagerWindow(QMainWindow):
                 port_server = int(server_address.split(":")[1])
 
                 if port_server < 0 or port_server > 65535:
-                    self.errorDialog('Server address invalid').exec()
+                    self.ErrorDialog('Server address invalid').exec()
                     self.add_server()
                 elif self.check_server_status(server_address, True):
                     db = database()
                     rows = db.select_server(server_address)
                     if rows:
-                        self.errorDialog('Server already added').exec()
+                        self.ErrorDialog('Server already added').exec()
                         self.add_server()
                     else:
                         db.insert_server(server_address)
                         self.refresh_server_list_thread()
                     db.close_connection()
             else:
-                self.errorDialog('Server address invalid').exec()
+                self.ErrorDialog('Server address invalid').exec()
                 self.add_server()
 
     def add_server_elements(self):
@@ -221,19 +220,16 @@ class LanplayManagerWindow(QMainWindow):
             server_address = self.server_address.get()
             pattern = re.compile("^(?!http:|https:|www.)([-a-zA-Z0-9@:%._]{1,256}):([0-9]{1,5})$")
 
-            
-
-
     def refresh_server_list_thread(self):
         thread = threading.Thread(target=self.refresh_server_list)
         thread.start()
 
     def refresh_server_list(self):
 
-        serverlist = self.ui.server_list
-        
-        while (serverlist.rowCount() > 0): 
-            serverlist.removeRow(0)
+        server_list = self.ui.server_list
+
+        while server_list.rowCount() > 0:
+            server_list.removeRow(0)
 
         db = database()
         rows = db.select_server('')
@@ -242,30 +238,31 @@ class LanplayManagerWindow(QMainWindow):
         for row in rows:
             server_address = str(row[1])
 
-            listIndex = serverlist.rowCount()
-            serverlist.insertRow(listIndex)
-            serverlist.setItem(listIndex, 2, QTableWidgetItem(server_address))
+            list_index = server_list.rowCount()
+            server_list.insertRow(list_index)
+            server_list.setItem(list_index, 2, QTableWidgetItem(server_address))
 
             server_status = self.check_server_status(server_address, False)
-            serverlist.setItem(listIndex, 0, QTableWidgetItem(str(server_status['online'])))
-            serverlist.setItem(listIndex, 1, QTableWidgetItem(str(server_status['idle']) if ('idle' in server_status) else ''))
+            server_list.setItem(list_index, 0, QTableWidgetItem(str(server_status['online'])))
+            server_list.setItem(list_index, 1,
+                                QTableWidgetItem(str(server_status['idle']) if ('idle' in server_status) else ''))
 
-            if (('rooms' in server_status) and server_status['rooms'] != None):
+            if ('rooms' in server_status) and server_status['rooms'] is not None:
                 for room in server_status['rooms']:
-                    listIndex = serverlist.rowCount()
-                    serverlist.insertRow(listIndex)
-                    serverlist.setItem(listIndex, 0, QTableWidgetItem(str(room['nodeCount'])))
-                    serverlist.setItem(listIndex, 2, QTableWidgetItem(f"    {self.lookup_tid(room['contentId'])} hosted by {room['hostPlayerName']}"))
-
-
+                    list_index = server_list.rowCount()
+                    server_list.insertRow(list_index)
+                    server_list.setItem(list_index, 0, QTableWidgetItem(str(room['nodeCount'])))
+                    server_list.setItem(list_index, 2, QTableWidgetItem(
+                        f"    {self.lookup_tid(room['contentId'])} hosted by {room['hostPlayerName']}"))
 
     def lookup_tid(self, tid):
 
         for game in self.tids:
-            if (tid.lower() == game['ID'].lower()):
+            if tid.lower() == game['ID'].lower():
                 return game['Name']
 
         return "Unknown Game"
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
