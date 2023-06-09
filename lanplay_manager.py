@@ -2,13 +2,13 @@ import json
 import os
 import platform
 import re
-import requests
 import sys
 import threading
 from tkinter import *
-from tkinter import messagebox
 
+import requests
 from PyQt5 import uic, QtGui
+from PyQt5.QtCore import pyqtSignal
 from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QInputDialog, QDialog, \
     QLineEdit, QDialogButtonBox, QVBoxLayout, QLabel
 
@@ -36,7 +36,7 @@ class LanplayManagerWindow(QMainWindow):
     server_address = None
     add_server_win = None
     list_box = None
-    thread = None
+    thread: threading.Thread = None
 
     tids = None
 
@@ -61,6 +61,8 @@ class LanplayManagerWindow(QMainWindow):
         }
     """}
 
+    refresh_server_list_signal = pyqtSignal(list, dict)
+
     def __init__(self):
         super().__init__()
         self.ui = uic.loadUi('lib/assets/lanplaymanager.ui', self)
@@ -75,6 +77,8 @@ class LanplayManagerWindow(QMainWindow):
         self.ui.refresh_list_button.clicked.connect(self.refresh_server_list_thread)
 
         self.show()
+
+        self.refresh_server_list_signal.connect(self.refresh_server_list_function)
 
         self.refresh_server_list_thread()
 
@@ -179,7 +183,6 @@ class LanplayManagerWindow(QMainWindow):
         self.popup_menu.post(event.x_root, event.y_root)
 
     def add_server(self):
-
         server_address, ok = QInputDialog().getText(self, "Add a server",
                                                     "Server address:", QLineEdit.Normal)
 
@@ -212,36 +215,36 @@ class LanplayManagerWindow(QMainWindow):
         enter_button = Button(self.add_server_win, text=save_label, font=(24), command=self.save_server)
         enter_button.pack(expand="yes", anchor="center")
 
-    def save_server(self):
-        if not self.server_address.get():
-            messagebox.showinfo(oops_label, sever_address_value_label, parent=self.add_server_win)
-        else:
-            server_address = self.server_address.get()
-            pattern = re.compile("^(?!http:|https:|www.)([-a-zA-Z0-9@:%._]{1,256}):([0-9]{1,5})$")
-
     def refresh_server_list_thread(self):
-        thread = threading.Thread(target=self.refresh_server_list)
-        thread.start()
+        if self.thread is not None and self.thread.is_alive():
+            return
+
+        self.thread = threading.Thread(target=self.refresh_server_list)
+        self.thread.start()
 
     def refresh_server_list(self):
+        db = database()
+        rows = db.select_server('')
+        db.close_connection()
+        servers_status = {}
+        for row in rows:
+            address = str(row[1])
+            servers_status[address] = self.check_server_status(address, False)
+        self.refresh_server_list_signal.emit(rows, servers_status)
 
+    def refresh_server_list_function(self, rows, servers_status):
         server_list = self.ui.server_list
 
         while server_list.rowCount() > 0:
             server_list.removeRow(0)
-
-        db = database()
-        rows = db.select_server('')
-        db.close_connection()
-
         for row in rows:
             server_address = str(row[1])
+            server_status = servers_status[server_address]
 
             list_index = server_list.rowCount()
             server_list.insertRow(list_index)
             server_list.setItem(list_index, 2, QTableWidgetItem(server_address))
 
-            server_status = self.check_server_status(server_address, False)
             server_list.setItem(list_index, 0, QTableWidgetItem(str(server_status['online'])))
             server_list.setItem(list_index, 1,
                                 QTableWidgetItem(str(server_status['idle']) if ('idle' in server_status) else ''))
@@ -251,16 +254,9 @@ class LanplayManagerWindow(QMainWindow):
                     list_index = server_list.rowCount()
                     server_list.insertRow(list_index)
                     server_list.setItem(list_index, 0, QTableWidgetItem(str(room['nodeCount'])))
-                    server_list.setItem(list_index, 2, QTableWidgetItem(
-                        f"    {self.lookup_tid(room['contentId'])} hosted by {room['hostPlayerName']}"))
+                    server_list.setItem(list_index, 2, QTableWidgetItem(f"{self.lookup_tid(room['contentId'])} hosted "
+                                                                        f"by {room['hostPlayerName']}"))
 
-    def lookup_tid(self, tid):
-
-        for game in self.tids:
-            if tid.lower() == game['ID'].lower():
-                return game['Name']
-
-        return "Unknown Game"
 
 # Add server labels
 save_label = "Save"
@@ -272,7 +268,7 @@ server_already_exists_label = "Server already exists!"
 server_port_values_label = "Server port must be between 0 and 65535"
 server_address_example_label = "Server address must be like lan.teknik.app:11451 for example"
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app = QApplication(sys.argv)
-    lanplaymanagerwindow = LanplayManagerWindow()
+    window = LanplayManagerWindow()
     sys.exit(app.exec())
