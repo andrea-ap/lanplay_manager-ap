@@ -208,13 +208,6 @@ class LanplayManagerWindow(QMainWindow):
                 self.ErrorDialog('Server address invalid').exec()
                 self.add_server()
 
-    def add_server_elements(self):
-        input_server = Entry(self.add_server_win, width=40, textvariable=self.server_address)
-        input_server.pack(expand="yes", anchor="center")
-
-        enter_button = Button(self.add_server_win, text=save_label, font=(24), command=self.save_server)
-        enter_button.pack(expand="yes", anchor="center")
-
     def refresh_server_list_thread(self):
         if self.thread is not None and self.thread.is_alive():
             return
@@ -257,6 +250,12 @@ class LanplayManagerWindow(QMainWindow):
                     server_list.setItem(list_index, 2, QTableWidgetItem(f"{self.lookup_tid(room['contentId'])} hosted "
                                                                         f"by {room['hostPlayerName']}"))
 
+    def lookup_tid(self, tid):
+
+        for game in self.tids:
+            if tid.lower() == game['ID'].lower():
+                return game['Name']
+
 
 # Add server labels
 save_label = "Save"
@@ -270,5 +269,5 @@ server_address_example_label = "Server address must be like lan.teknik.app:11451
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = LanplayManagerWindow()
+    lanplaymanagerwindow = LanplayManagerWindow()
     sys.exit(app.exec())
