@@ -1,5 +1,5 @@
 
-# Many Fix , Thanks : https://github.com/Decscots
+
 
 # lanplay_manager
 a easy solution to managing all those servers 
