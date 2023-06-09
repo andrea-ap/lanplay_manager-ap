@@ -3,7 +3,7 @@
 
 # lanplay_manager
 a easy solution to managing all those servers 
-For Windows download capture driver : https://www.winpcap.org/install/bin/WinPcap_4_1_3.exe
+# For Windows download capture driver : https://www.winpcap.org/install/bin/WinPcap_4_1_3.exe
 
 
 works on all platforms
