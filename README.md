@@ -4,6 +4,7 @@
 # lanplay_manager
 a easy solution to managing all those servers 
 # For Windows download capture driver : https://www.winpcap.org/install/bin/WinPcap_4_1_3.exe
+# For Linux execute install of capture driver :  sudo apt install libpcap0.8 libuv1
 
 
 works on all platforms
